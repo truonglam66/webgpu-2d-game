@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebGPU 2D Game</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+        background: #0a0a0f;
+        overflow: hidden;
+        font-family: monospace;
+        color: #ccc;
+      }
+      canvas {
+        /* CSS size is fixed = fills viewport.
+           canvas.width/height (physical px) is set by ResizeObserver in JS.
+           Pinning CSS prevents the feedback loop where setting canvas.width
+           changes clientWidth → triggers another resize → exponential growth. */
+        display: block;
+        width: 100vw;
+        height: 100vh;
+        image-rendering: pixelated;
+      }
+      #error {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #ff4444;
+        padding: 16px;
+        display: none;
+        text-align: center;
+        white-space: pre-wrap;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas" width="1" height="1"></canvas>
+    <div id="error"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
